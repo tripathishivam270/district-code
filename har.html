@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style>
+	body{
+	background: url('bg.jpg') no-repeat;
+	background-size: cover;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+var DistrictByState = {
+Haryana: ["Ambala","Bhiwani","Charkhi Dadari","Faridabad","Fatehabad","Gurugram","Hisar","Jhajjar","Jind","Kaithal","Karnal","Kurukshetra","Mahendragrah","Nuh","Palwal","Panchkula","Panipat","Rewari","Rohtak","Sirsa","Sonipat","Yamunanagar"],
+Maharashtra: ["mumbai","Thane","satara"],
+}
+function makeSubmenu(value) {
+if(value.length==0) document.getElementById("DistrictSelect").innerHTML = "<option></option>";
+else {
+var DistrictOptions = "";
+for(DistrictId in DistrictByState[value]) {
+DistrictOptions+="<option>"+DistrictByState[value][DistrictId]+"</option>";
+}
+document.getElementById("DistrictSelect").innerHTML = DistrictOptions;
+}
+}
+function displaySelected() { var country = document.getElementById("countrySelect").value;
+var District = document.getElementById("DistrictSelect").value;
+alert(country+"\n"+District);
+}
+function resetSelection() {
+document.getElementById("countrySelect").selectedIndex = 0;
+document.getElementById("DistrictSelect").selectedIndex = 0;
+}
+</script>
+</head>
+<body onload="resetSelection()">
+	<label for="countrySelect">State:</label>
+<select id="countrySelect" size="1" onchange="makeSubmenu(this.value)">
+<option value="" disabled selected>Choose State</option>
+<option>Haryana</option>
+<option>Maharashtra</option>
+</select>
+<br>
+<br>
+<label for="countrySelect">District<id="countrySelect" onchange=(this.value)></label>
+<select id="DistrictSelect" size="1" >
+<option value="" disabled selected>Choose District</option>
+<option></option>
+</select>
+<br><br>
+<button onclick="displaySelected()">show selected</button>
+</body>
+</html>
